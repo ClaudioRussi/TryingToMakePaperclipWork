@@ -7,7 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div>
+    <header style='background-color: red'>
+      <p style='text-align: right'><%=render 'session/header'%></p>
+    </header>
+  </div>
 <%= yield %>
 
 </body>

@@ -1,0 +1,37 @@
+<ul style='display: inline'>
+  <li class='header_item'>
+    <%= link_to 'Logo', root_path %>
+  </li>
+  <li class='header_item'>
+    <%= link_to 'Sign up', new_user_path %>
+  </li>
+  <li class='header_item'>
+    Pets for adoption
+  </li>
+  <li class='header_item'>
+    Missing pets
+  </li>
+  <li class='header_item'>
+    Found pets
+  </li>
+  <li class='header_item'>
+    Memes
+  </li>
+  <% if loged? %>
+    <li>
+      <%= link_to 'Loggout', loggout_path %>
+    </li>
+  <% else %>
+    <%=form_tag action:'login', controller: 'session' do %>
+    <li class='header_item',style='margin-left: 50px'>
+      Email: <%= email_field_tag :email %>
+    </li>
+    <li class='header_item'>
+      Password: <%= password_field_tag :password %>
+    </li>
+    <li class='header_item'>
+      <%=submit_tag :Login %>
+    </li>
+    <% end %>
+  <% end %>
+</ul>

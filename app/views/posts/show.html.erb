@@ -1,0 +1,7 @@
+<%if @post %>
+  <h2><%= @post.title %></h2>
+  <%= @post.body %>
+  <%= @post.category %>
+<% else %>
+  <h2>The post that you are looking for doesn't exist!</h2>
+<% end %>

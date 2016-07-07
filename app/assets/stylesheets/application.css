@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+.header_item{
+  display: inline;
+  font-family: fantasy;
+  margin: 5px
+}
