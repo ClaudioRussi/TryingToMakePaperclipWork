@@ -9,7 +9,7 @@ root 'welcome#index'
 get 'adoption/:id' => 'posts#adoption'
 get 'found/:id' => 'posts#found'
 get 'missing/:id' => 'posts#missing'
-get 'login' => 'session#login'
+post 'login' => 'session#login'
 get 'logout'=> 'session#logout'
 resources :users
 resources :posts
