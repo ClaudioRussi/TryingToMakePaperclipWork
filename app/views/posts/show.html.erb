@@ -1,7 +1,14 @@
 <%if @post %>
-  <h2><%= @post.title %></h2>
-  <%= @post.body %>
+<div>
+  <div>
+    <div style='width:1000px;heigth:400px;'>
+      <%= image_tag @post.cover.url(:cover) %>
+    </div>
+    <h2><%= @post.title %></h2>
+    <%= @post.body %>>
+  </div>
   <%= @post.category %>
+</div>
 <% else %>
   <h2>The post that you are looking for doesn't exist!</h2>
 <% end %>

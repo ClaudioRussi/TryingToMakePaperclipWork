@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :is_logged?, only:[:create,:destroy]
+  before_action :is_logged?, only:[:create,:destroy,:new]
   before_action :set_post, only:[:adoption,:missing,:found]
   def new
     @post= Post.new  
@@ -29,14 +29,14 @@ class PostsController < ApplicationController
   end
   private
     def post_params
-      params.require(:post).permit(:title,:body,:category)
+      params.require(:post).permit(:title,:body,:category,:cover)
     end
     
     def is_logged?
       if session[:user_id]
-        @user=User.find(:user_id)
+        @user=User.find(session[:user_id])
       else
-        redirect_to loggin_path
+        redirect_to root_path
       end
     end
     

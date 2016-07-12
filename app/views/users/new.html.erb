@@ -5,10 +5,24 @@
       <%=error%>
     <%end%>
   <%end%>
-  Name: <%=f.text_field :name %>
-  Email: <%=f.text_field :email %>
-  Password: <%=f.password_field :password %>
-  Password confirmation: <%=f.password_field :password_confirmation %>
-  Avatar: <%=f.file_field :avatar %>
-  <%=f.submit :send %>
+<ul style="list-style-type:none; color:white">
+  <li style="padding:5px">
+  Name: <%=f.text_field :name, class: "form_field" %>
+  </li>
+  <li style="padding:5px">
+  Email: <%=f.text_field :email, class: "form_field"  %>
+  </li>
+  <li style="padding:5px">
+  Password: <%=f.password_field :password, class: "form_field"  %>
+  </li>
+  <li style="padding:5px">
+  Password confirmation: <%=f.password_field :password_confirmation, class: "form_field"  %>
+  </li>
+  <li style="padding:5px">
+  Avatar: <%=f.file_field :avatar, class: "form_field"  %>
+  </li>
+  <li style="padding:5px">
+  <%=f.submit :send, class: "form_button" %>
+  </li>
+</ul>
 <%end%>

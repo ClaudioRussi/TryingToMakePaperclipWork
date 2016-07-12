@@ -5,14 +5,13 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 </head>
-<body>
-  <div>
-    <header style='background-color: red'>
-      <p style='text-align: right'><%=render 'session/header'%></p>
-    </header>
-  </div>
-<%= yield %>
-
+<body style="margin:0px;background-color:#E1E6FA">
+  <%=render 'session/header'%>
+<div style="padding-top:200px">
+  <%= yield %>
+</div>
 </body>
 </html>

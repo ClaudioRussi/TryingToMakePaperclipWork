@@ -1,9 +1,8 @@
-<ul style='display: inline'>
+<div style="background-color:red; top:0px;position:fixed; width:100%;" >
+<%=form_tag action:'login', controller: 'session' do %>
+<ul style='display: inline; list-style-type:none; vertical-align:middle;'>
   <li class='header_item'>
-    <%= link_to 'Logo', root_path %>
-  </li>
-  <li class='header_item'>
-    <%= link_to 'Sign up', new_user_path %>
+    <%= link_to 'PetProject', root_path, class:'logo'%>
   </li>
   <li class='header_item'>
     Pets for adoption
@@ -18,20 +17,31 @@
     Memes
   </li>
   <% if loged? %>
-    <li>
-      <%= link_to 'Loggout', loggout_path %>
+    <li class='header_item'>
+      <%= link_to (image_tag current_user.avatar.url(:thumb)), root_path, class:'nav-link',style:'float: right' %>
     </li>
+  
+    <li class='header_item'>
+      <%= link_to 'Logout', logout_path, class:'nav-link',style:'float: right;'%>
+    </li>
+    
   <% else %>
-    <%=form_tag action:'login', controller: 'session' do %>
-    <li class='header_item',style='margin-left: 50px'>
-      Email: <%= email_field_tag :email %>
+    <li class='header_item'>
+    <%= link_to 'Sign up', new_user_path, class:'nav-link' %>
     </li>
     <li class='header_item'>
-      Password: <%= password_field_tag :password %>
+      Email: <%= email_field_tag :email, '' ,class: "form_field" %>
     </li>
+    
     <li class='header_item'>
-      <%=submit_tag :Login %>
+      Password: <%= password_field_tag :password, '' ,class: "form_field"  %>
+    </li>
+    
+    <li class='header_item'>
+      <%=submit_tag :Login, class: "form_button"  %>
     </li>
     <% end %>
-  <% end %>
+
 </ul>
+<% end %>
+</div>

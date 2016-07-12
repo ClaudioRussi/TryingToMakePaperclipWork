@@ -1,6 +1,7 @@
-<%= form_for @post do |f| %>
+<%= form_for @post, html: {multipart: true} do |f| %>
   Title:<%=f.text_field :title %><br>
   Body:<%=f.text_area :body%><br>
   Category:<%=f.select :category, ["Adoption","Missing","Found"] %><br>
+  Cover:<%= f.file_field :cover%><br>
   <%=f.submit :create %>
 <% end %>
