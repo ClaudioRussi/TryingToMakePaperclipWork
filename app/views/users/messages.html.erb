@@ -1,0 +1,13 @@
+<h2>Messages</h2>
+
+<h3>Received</h3>
+<%@received_msgs.each do |msg| %>
+  <p><%=msg.sender.name%>:</p>
+  <p><%=msg.body%></p>
+<% end %>
+
+<h3>Sent</h3>
+<%@sent_msgs.each do |msg| %>
+  <p><%=msg.recipent.name %>:</p>
+  <p><%=msg.body%></p>
+<% end %>

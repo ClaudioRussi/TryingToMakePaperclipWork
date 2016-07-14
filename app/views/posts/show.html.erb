@@ -9,6 +9,25 @@
   </div>
   <%= @post.category %>
 </div>
+<div>
+  <% @comments.each do |comment| %>
+    <%=User.find(comment.user_id).name%>
+    <%=comment.body%>
+  <% end %>
+</div>
+
+<div>
+  <% if loged? %>
+    <%= form_for [@post,@comment] do |f| %>
+      Body:<%=f.text_area :body %>
+      <%= f.submit :send %>
+    <%end%>
+  <%else%>
+    <p>You need to log in before comment</p>
+  <%end%>
+</div>
+
+
 <% else %>
   <h2>The post that you are looking for doesn't exist!</h2>
 <% end %>

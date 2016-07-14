@@ -1,0 +1,7 @@
+<h2>This is <%=@user.name%> profile</h2>
+<p>Email:<%=@user.email%></p>
+<p><%= link_to 'Send private message', mp_path(@user.id) %></p>
+<h3><%= @user.name%> posts</h3>
+<% @user.posts.each do |post| %>
+  <h4><%=link_to post.title, post_path(post)%> </h4>
+<% end %>

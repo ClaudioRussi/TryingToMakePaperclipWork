@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :is_logged?, only:[:create,:destroy,:new]
-  before_action :set_post, only:[:adoption,:missing,:found]
+  before_action :set_post, only:[:show]
   def new
     @post= Post.new  
   end
@@ -16,16 +16,20 @@ class PostsController < ApplicationController
     end
   end
   
-  def adoption
-    render 'show'
+  def show
+    @comments=@post.comments
+    @comment=Comment.new
+    
   end
   
   def missing
-    render 'show'
+    
   end
-  
+  def adoption
+    
+  end
   def found
-    render 'show'
+    
   end
   private
     def post_params

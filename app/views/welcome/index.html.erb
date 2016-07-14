@@ -1,20 +1,20 @@
 <%if @adoption%>
   <p>Last adoption:</p>
-  <p><%=link_to @adoption.title, adoption_path(@adoption) %></p>
+  <p><%=link_to @adoption.title, post_path(@adoption) %></p>
 <%else%>
   <p>There are not pet for adoptions</p>
 <%end%>
 
 <%if @missing%>
   <p>Last missing:</p>
-  <p><%=link_to @missing.title, missing_path(@missing) %></p>
+  <p><%=link_to @missing.title, post_path(@missing) %></p>
 <%else%>
   <p>There are not missing pet</p>
 <%end%>
 
 <%if @found%>
   <p>Last found:</p>
-  <p><%=link_to @found.title, found_path(@found) %></p>
+  <p><%=link_to @found.title, post_path(@found) %></p>
 <%else%>
   <p>There are not found pet</p>
 <%end%>

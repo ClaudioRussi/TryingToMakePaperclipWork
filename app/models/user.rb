@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   validates :name, presence:true, length:{maximum:15}
   has_many :posts
   has_many :comments
+  has_many :sent_messages, class_name: 'Message'
+  has_many :received_messages, class_name: 'Message'
   validates_attachment_content_type :avatar, content_type: /\Aimage/
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
 end

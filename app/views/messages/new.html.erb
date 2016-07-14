@@ -1,0 +1,11 @@
+<%= form_for @message do |f|%>
+  <% if @message.errors.any? %>
+    <% @message.errors.full_messages do |message| %>
+    <%= message %>
+    <% end %>
+  <%end%>
+  <p>Body</p>
+  <%=f.text_area :body %>
+  <%=f.hidden_field :recipent_id, value: @recipent_id%>
+  <%=f.submit :send %>
+<% end %>

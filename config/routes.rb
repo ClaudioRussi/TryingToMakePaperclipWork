@@ -6,13 +6,24 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 root 'welcome#index'
-get 'adoption/:id' => 'posts#adoption'
-get 'found/:id' => 'posts#found'
-get 'missing/:id' => 'posts#missing'
+get 'adoption' => 'posts#adoption'
+get 'found' => 'posts#found'
+get 'missing' => 'posts#missing'
 post 'login' => 'session#login'
 get 'logout'=> 'session#logout'
 resources :users
-resources :posts
+resources :posts do
+  resources :comments
+end
+get 'mps'=> 'users#messages'
+
+get 'mp/:id' => 'messages#new', as: :mp
+
+get 'messages' => 'messages#show'
+
+post 'messages' => 'messages#create'
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
