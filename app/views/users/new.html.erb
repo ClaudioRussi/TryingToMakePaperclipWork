@@ -1,11 +1,12 @@
-
-<%= form_for @user,url: users_path, html:{multipart:true} do |f| %>
+<div style='background-color:red;color:white'>
   <% if @user.errors.any? %>
-    <% @user.errors.full_messages do |error| %>
-      <%=error%>
-    <%end%>
+   <% @user.errors.full_messages.each do |message|%>
+    <p><%= message %></p>
+   <%end%>
   <%end%>
-<ul style="list-style-type:none; color:white">
+</div>
+<%= form_for @user,url: users_path, html:{multipart:true} do |f| %>
+<ul style="list-style-type:none; color:#2A2C2B">
   <li style="padding:5px">
   Name: <%=f.text_field :name, class: "form_field" %>
   </li>

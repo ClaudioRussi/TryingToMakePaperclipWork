@@ -1,4 +1,4 @@
-<div style="background-color:red; top:0px;position:fixed; width:100%;" >
+<div style="background-color:#DC5D38; top:0px;position:fixed; width:100%;" >
 <%=form_tag action:'login', controller: 'session' do %>
 <ul style='display: inline; list-style-type:none; vertical-align:middle;'>
   <li class='header_item'>
@@ -18,7 +18,7 @@
   </li>
   <% if loged? %>
     <li class='header_item'>
-      <%= link_to (image_tag current_user.avatar.url(:thumb)), root_path, class:'nav-link',style:'float: right' %>
+      <%= link_to (image_tag current_user.avatar.url(:thumb)), user_edit_path, class:'nav-link',style:'float: right' %>
     </li>
   
     <li class='header_item'>

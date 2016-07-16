@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :is_logged?, only:[:create,:destroy,:new]
+  before_action :is_loged?, only:[:create,:destroy,:new]
   before_action :set_post, only:[:show]
+  
   def new
     @post= Post.new  
   end
@@ -19,32 +20,35 @@ class PostsController < ApplicationController
   def show
     @comments=@post.comments
     @comment=Comment.new
-    
   end
   
   def missing
-    
+    posts=Post.order_by_category('Missing').order(created_at: :desc)
+    @page=paginator(posts,params[:id])
+    render 'list'
   end
+  
   def adoption
-    
+    posts=Post.order_by_category('Adoption').order(created_at: :desc)
+    @page=paginator(posts,params[:id])
+    render 'list'
   end
+  
   def found
-    
+    posts=Post.order_by_category('Found').order(created_at: :desc)
+    @page= paginator(posts,params[:id])
+    render 'list'
   end
+  
   private
+  
     def post_params
       params.require(:post).permit(:title,:body,:category,:cover)
-    end
-    
-    def is_logged?
-      if session[:user_id]
-        @user=User.find(session[:user_id])
-      else
-        redirect_to root_path
-      end
     end
     
     def set_post
       @post=Post.where(id: params[:id]).last
     end
+  
+    
 end

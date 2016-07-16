@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only:[:show]
+  before_action :is_loged?, only:[:messages,:edit,:show,:update]
   def new
     @user=User.new
   end
@@ -23,9 +24,25 @@ class UsersController < ApplicationController
     @received_msgs=Message.where(recipent_id:@user.id)
   end
   
+  def edit
+    @user=current_user
+  end
+  
+  def update
+    if current_user.update(user_params)
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+  
   private
     def user_params
       params.require(:user).permit(:password,:password_confirmation,:name,:email,:avatar)
+    end
+  
+    def edit_params
+      params.require(:user).permit(:password,:password_confirmation,:avatar)
     end
     
     def set_user

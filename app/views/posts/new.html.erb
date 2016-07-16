@@ -1,7 +1,26 @@
+<div style="background-color:red;color:white">
+  <% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do |message| %>
+      <p><%=message%></p>
+    <%end%>
+  <% end %>
+</div>
 <%= form_for @post, html: {multipart: true} do |f| %>
-  Title:<%=f.text_field :title %><br>
-  Body:<%=f.text_area :body%><br>
-  Category:<%=f.select :category, ["Adoption","Missing","Found"] %><br>
-  Cover:<%= f.file_field :cover%><br>
-  <%=f.submit :create %>
+  <ul style="list-style-type:none; color:#2A2C2B">
+    <li style="padding:5px">
+      Title:<%=f.text_field :title,class: "form_field"  %><br>
+    </li>
+    <li style="padding:5px">
+      Body:<%=f.text_area :body,class: "form_field" %><br>
+    </li>
+    <li style="padding:5px">
+      Category:<%=f.select :category, ["Adoption","Missing","Found"],class: "form_field"  %><br>
+    </li>
+    <li style="padding:5px">
+      Cover:<%= f.file_field :cover,class: "form_field" %><br>
+    </li>
+    <li style="padding:5px">
+      <%=f.submit :create,class:"form_button" %>
+    </li>
+  </ul>
 <% end %>
