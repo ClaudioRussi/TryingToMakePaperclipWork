@@ -15,10 +15,14 @@ class MemesController < ApplicationController
   end
   
   def show
+    @comment=Comment.new
+    @comments=Comment.where(meme_id: @meme.id)
   end
   
   def index
-    @memes=Meme.where(status: 'Accepted')
+    memes=Meme.where(status: 'Accepted')
+    @page=paginator(memes,params[:id])
+    set_next_previous(memes,params[:id])
   end
   
   def vote
@@ -50,4 +54,5 @@ class MemesController < ApplicationController
    def set_meme
      @meme=Meme.find(params[:id])
    end
+
 end

@@ -13,13 +13,19 @@
   <li>
     <%= link_to 'Found', found_path(1)%>
   </li>
+  <li>
+    <%= link_to 'Memes', meme_list_path(1)%>
+  </li>
+  
+  <div style="width:auto;float:right;">
   <% if loged? %>
-    <li class="profile-picture">
-      <%= link_to (image_tag current_user.avatar.url(:thumb)), user_edit_path,style:'float: right' %>
-    </li>
   
     <li>
-      <%= link_to 'Logout', logout_path, style:'float: right;'%>
+      <%= link_to 'Logout', logout_path, style:"vertical-align:middle"%>
+    </li>
+
+    <li class="profile-picture">
+      <%= link_to (image_tag current_user.avatar.url(:thumb)), user_edit_path, style:"vertical-align:middle"%>
     </li>
     
   <% else %>
@@ -38,7 +44,7 @@
       <%=submit_tag :Login, class: "form_button"  %>
     </li>
     <% end %>
-
+    </div>
 </ul>
 <% end %>
 </div>

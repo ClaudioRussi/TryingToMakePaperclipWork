@@ -1,8 +1,15 @@
-<%if @memes.any? %>
-  <%@memes.each do |meme| %>
-    <h2><%=link_to meme.title, meme_path(meme) %></h2>
+<%if @page%>
+  <%@page.each do |meme| %>
+    <h2><%=link_to meme.title+" by: #{meme.user.name}", meme_path(meme) %></h2>
 <%= link_to image_tag(meme.body.url(:medium)), meme_path(meme) %>
   <% end %>
 <%else %>
-  <h2>Sorry, there are no approved memes yet</h2>
+  <h2>Sorry, there are no approved memes yet...</h2>
+  <p>But you can help us going to <b><%=link_to 'Moderation', moderation_path%></b></p>
 <% end %>
+<% if @next_page %>
+  <%=link_to 'Next page', meme_list_path(@next_page)%>
+<%end%>
+<% if @previous_page%>
+  <%=link_to 'Previous page', meme_list_path(@previous_page)%>
+<%end%>

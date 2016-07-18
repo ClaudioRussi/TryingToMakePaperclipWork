@@ -25,19 +25,25 @@ class PostsController < ApplicationController
   def missing
     posts=Post.order_by_category('Missing').order(created_at: :desc)
     @page=paginator(posts,params[:id])
+    set_next_previous(posts,params[:id])
     render 'list'
+    
   end
   
   def adoption
     posts=Post.order_by_category('Adoption').order(created_at: :desc)
     @page=paginator(posts,params[:id])
+    set_next_previous(posts,params[:id])
     render 'list'
+    
   end
   
   def found
     posts=Post.order_by_category('Found').order(created_at: :desc)
     @page= paginator(posts,params[:id])
+    set_next_previous(posts,params[:id])
     render 'list'
+    
   end
   
   private

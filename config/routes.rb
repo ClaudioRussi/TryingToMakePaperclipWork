@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+concern :commentable do 
+  resources :comments
+end
 get 'welcome/index'
  
   # The priority is based upon order of creation: first created -> highest priority.
@@ -7,9 +11,9 @@ get 'welcome/index'
   # You can have the root of your site routed with "root"
 root 'welcome#index'
   
-get 'adoption/:id' => 'posts#adoption', as: :adoption
-get 'found/:id' => 'posts#found', as: :found
-get 'missing/:id' => 'posts#missing', as: :missing
+get 'adoption/p/:id' => 'posts#adoption', as: :adoption
+get 'found/p/:id' => 'posts#found', as: :found
+get 'missing/p/:id' => 'posts#missing', as: :missing
   
 post 'login' => 'session#login'
 get 'logout'=> 'session#logout'
@@ -19,13 +23,12 @@ get 'user/edit'=> 'users#edit'
 patch 'user/update'=> 'users#update'
 get 'mps'=> 'users#messages'
   
-resources :posts do
-  resources :comments
-end
+resources :posts, concerns: :commentable
 
-resources :memes
+resources :memes, except:[:index], concerns: :commentable
 get 'moderation' => 'memes#moderation'
 post 'vote' => 'memes#vote', as: :vote
+get 'meme/p/:id' => 'memes#index', as: :meme_list
 
 get 'mp/:id' => 'messages#new', as: :mp
 get 'messages' => 'messages#show'

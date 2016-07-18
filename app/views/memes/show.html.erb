@@ -2,3 +2,24 @@
 <div>
   <%= image_tag @meme.body.url(:large) %>
 </div>
+
+
+<div>
+  <%if @comments%>
+    <% @comments.each do |comment| %>
+      <%=User.find(comment.user_id).name%>
+      <%=comment.body%>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <% if loged? %>
+    <%= form_for [@meme,@comment] do |f| %>
+      Body:<%=f.text_area :body %>
+      <%= f.submit :send %>
+    <%end%>
+  <%else%>
+    <p>You need to log in before comment</p>
+  <%end%>
+</div>

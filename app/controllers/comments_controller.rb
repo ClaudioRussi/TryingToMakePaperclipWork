@@ -1,21 +1,25 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only:[:new,:create]
+  before_action :set_commentable, only:[:new,:create]
   
   def create
-    @comment= @post.comments.new(comment_params)
+    @comment= @commentable.comments.new(comment_params)
     @comment.user_id=session[:user_id]
     if @comment.save
-      @post.save
       redirect_to :back
     else
-      render @post
+      render @commentable
     end
   end
   
   private
-    def set_post
-      @post=Post.find(params[:post_id])
+    def set_commentable
+      if Post.where(id: params[:post_id]).any?
+        @commentable=Post.find(params[:post_id])
+      else
+        @commentable=Meme.find(params[:meme_id])
+      end
     end
+
     def comment_params
       params.require(:comment).permit(:body)
     end

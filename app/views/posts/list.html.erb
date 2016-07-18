@@ -1,3 +1,25 @@
 <%@page.each do |post| %>
 <h3><%=link_to post.title, post_path(post) %></h3>
 <%end%>
+
+<% if @previous_page %>
+  <% case @page[0].category %>
+  <% when 'Adoption'%>
+    <%= link_to 'Previous page', adoption_path(@previous_page) %>
+  <% when 'Missing'%>
+    <%= link_to 'Previous page', adoption_path(@previous_page) %>
+  <% when 'Found'%>
+    <%= link_to 'Previous page', adoption_path(@previous_page) %>
+  <% end %>
+<% end %>
+
+<% if @next_page %>
+  <% case @page[0].category %>
+  <% when 'Adoption'%>
+    <%= link_to 'Next page', adoption_path(@next_page) %>
+  <% when 'Missing'%>
+    <%= link_to 'Next page', adoption_path(@next_page) %>
+  <% when 'Found'%>
+    <%= link_to 'Next page', adoption_path(@next_page) %>
+  <% end %>
+<% end %>
