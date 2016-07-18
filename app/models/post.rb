@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  has_attached_file :cover, styles:{cover:'1000x400!'},default_url: "/images/:style/missing_cover.png"
+  has_attached_file :cover, styles:{cover:'1000x400#',thumb:'60x60#'},default_url: "/images/:style/missing_cover.png"
   belongs_to :user
   has_many :comments
   

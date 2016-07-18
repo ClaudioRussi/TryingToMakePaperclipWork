@@ -1,20 +1,30 @@
-<%if @adoption%>
-  <p>Last adoption:</p>
-  <p><%=link_to @adoption.title, post_path(@adoption) %></p>
-<%else%>
-  <p>There are not pet for adoptions</p>
-<%end%>
-
-<%if @missing%>
-  <p>Last missing:</p>
-  <p><%=link_to @missing.title, post_path(@missing) %></p>
-<%else%>
-  <p>There are not missing pet</p>
-<%end%>
-
-<%if @found%>
-  <p>Last found:</p>
-  <p><%=link_to @found.title, post_path(@found) %></p>
-<%else%>
-  <p>There are not found pet</p>
-<%end%>
+<div class="index">
+  
+  <%list=[@adoptions,@missings,@founds]%>
+  
+  <%for i in list%>
+  
+    <%if i %>
+      <%case i[0].category%>
+      <%when 'Missing'%>
+        <h2><%=link_to 'Missing pets', missing_path(1)%></h2>
+      <%when 'Adoption'%>
+        <h2><%=link_to 'Pets for adoption', adoption_path(1)%></h2>
+      <%else%>
+        <h2><%=link_to 'Found pets', found_path(1)%></h2>
+      <%end%>
+      <table>
+      <tr>
+      <%i.each do |post|%>
+        <td>
+        <%=link_to (image_tag post.cover.url(:thumb)), post_path(post)%>
+        </td>
+      <%end%> 
+      </tr>
+      </table>
+    <%else%>
+      <h3>There are no posts that belong to this category</h3>
+    <%end%>
+  <%end%>
+  
+</div>

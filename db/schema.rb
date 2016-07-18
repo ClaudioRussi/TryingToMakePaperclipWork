@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712045146) do
+ActiveRecord::Schema.define(version: 20160718005714) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -23,6 +23,27 @@ ActiveRecord::Schema.define(version: 20160712045146) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "memes", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "vote_count",        default: 0
+    t.integer  "vote",              default: 0
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "body_file_name"
+    t.string   "body_content_type"
+    t.integer  "body_file_size"
+    t.datetime "body_updated_at"
+    t.string   "status",            default: "In Moderation"
+  end
+
+  add_index "memes", ["user_id"], name: "index_memes_on_user_id"
+
+  create_table "memes_users", id: false, force: :cascade do |t|
+    t.integer "meme_id", null: false
+    t.integer "user_id", null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.integer  "sender_id"

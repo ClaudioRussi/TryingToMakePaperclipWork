@@ -1,0 +1,4 @@
+<h2><%=@meme.title %> by: <%=link_to @meme.user.name, user_path(@meme.user_id)%></h2>
+<div>
+  <%= image_tag @meme.body.url(:large) %>
+</div>

@@ -6,23 +6,29 @@ get 'welcome/index'
 
   # You can have the root of your site routed with "root"
 root 'welcome#index'
-get 'adoption/:id' => 'posts#adoption'
-get 'found/:id' => 'posts#found'
-get 'missing/:id' => 'posts#missing'
+  
+get 'adoption/:id' => 'posts#adoption', as: :adoption
+get 'found/:id' => 'posts#found', as: :found
+get 'missing/:id' => 'posts#missing', as: :missing
+  
 post 'login' => 'session#login'
 get 'logout'=> 'session#logout'
+  
 resources :users, except:[:edit, :update]
 get 'user/edit'=> 'users#edit'
 patch 'user/update'=> 'users#update'
+get 'mps'=> 'users#messages'
+  
 resources :posts do
   resources :comments
 end
-get 'mps'=> 'users#messages'
+
+resources :memes
+get 'moderation' => 'memes#moderation'
+post 'vote' => 'memes#vote', as: :vote
 
 get 'mp/:id' => 'messages#new', as: :mp
-
 get 'messages' => 'messages#show'
-
 post 'messages' => 'messages#create'
 
 

@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :sent_messages, class_name: 'Message'
   has_many :received_messages, class_name: 'Message'
+  has_many :memes
+  has_and_belongs_to_many :moderated_memes, class_name: 'Meme'
   validates_attachment_content_type :avatar, content_type: /\Aimage/
   validates_attachment_file_name :avatar, matches: [/png\Z/, /jpe?g\Z/]
 end

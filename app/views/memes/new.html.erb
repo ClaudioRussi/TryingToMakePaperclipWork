@@ -1,0 +1,11 @@
+<%if @meme.errors.any? %>
+  <%@meme.errors.full_messages.each do |message|%>
+    <p><%=message %></p>
+  <%end%>
+<%end%>
+
+<%= form_for @meme, html: {multipart: true} do |f| %>
+  <%= f.text_field :title %>
+  <%= f.file_field :body %>
+  <%= f.submit :create %>
+<% end %>

@@ -1,0 +1,7 @@
+<%if @meme%>
+  <h2><%=@meme.title%></h2>
+  <%= image_tag @meme.body.url(:large) %>
+  <p><%=button_to 'Accept', vote_path, params:{id:@meme.id,point:1}%>  <%=button_to 'Pass', vote_path, params:{id:@meme.id,point:0}%> <%=button_to 'Decline', vote_path, params:{id:@meme.id,point: -1}%></p>
+<% else %>
+  <h2>Currently, there are not memes to moderate</h2>
+<% end %>

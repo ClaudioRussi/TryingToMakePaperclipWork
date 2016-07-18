@@ -1,43 +1,40 @@
-<div style="background-color:#DC5D38; top:0px;position:fixed; width:100%;" >
+<div class="header">
 <%=form_tag action:'login', controller: 'session' do %>
-<ul style='display: inline; list-style-type:none; vertical-align:middle;'>
-  <li class='header_item'>
+<ul>
+  <li>
     <%= link_to 'PetProject', root_path, class:'logo'%>
   </li>
-  <li class='header_item'>
-    Pets for adoption
+  <li>
+    <%= link_to 'Adoption', adoption_path(1)%>
   </li>
-  <li class='header_item'>
-    Missing pets
+  <li>
+    <%= link_to 'Missing', missing_path(1)%>
   </li>
-  <li class='header_item'>
-    Found pets
-  </li>
-  <li class='header_item'>
-    Memes
+  <li>
+    <%= link_to 'Found', found_path(1)%>
   </li>
   <% if loged? %>
-    <li class='header_item'>
-      <%= link_to (image_tag current_user.avatar.url(:thumb)), user_edit_path, class:'nav-link',style:'float: right' %>
+    <li class="profile-picture">
+      <%= link_to (image_tag current_user.avatar.url(:thumb)), user_edit_path,style:'float: right' %>
     </li>
   
-    <li class='header_item'>
-      <%= link_to 'Logout', logout_path, class:'nav-link',style:'float: right;'%>
+    <li>
+      <%= link_to 'Logout', logout_path, style:'float: right;'%>
     </li>
     
   <% else %>
-    <li class='header_item'>
-    <%= link_to 'Sign up', new_user_path, class:'nav-link' %>
+    <li>
+    <%= link_to 'Sign up', new_user_path %>
     </li>
-    <li class='header_item'>
+    <li>
       Email: <%= email_field_tag :email, '' ,class: "form_field" %>
     </li>
     
-    <li class='header_item'>
+    <li>
       Password: <%= password_field_tag :password, '' ,class: "form_field"  %>
     </li>
     
-    <li class='header_item'>
+    <li>
       <%=submit_tag :Login, class: "form_button"  %>
     </li>
     <% end %>

@@ -1,0 +1,8 @@
+<%if @memes.any? %>
+  <%@memes.each do |meme| %>
+    <h2><%=link_to meme.title, meme_path(meme) %></h2>
+<%= link_to image_tag(meme.body.url(:medium)), meme_path(meme) %>
+  <% end %>
+<%else %>
+  <h2>Sorry, there are no approved memes yet</h2>
+<% end %>

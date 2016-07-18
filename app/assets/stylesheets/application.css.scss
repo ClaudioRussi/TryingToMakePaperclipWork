@@ -13,17 +13,55 @@
  *= require_tree .
  *= require_self
  */
-.header_item{
-  margin-right: 10px;
-  font-family: 'Droid Serif';
-  text-decoration:none;
-  display:inline;
-  color:white;
-  font-weight: bold;
-  font-size:15px;
-  vertical-align: middle
+.header{
+  background-color:#DC5D38; top:0px;position:fixed;
+  width:100%;
+  
+  li{
+    margin-right: 10px;
+    font-family: 'Droid Serif';
+    text-decoration:none;
+    display:inline;
+    color:white;
+    font-weight: bold;
+    font-size:15px;
+    vertical-align: middle
+  }
+  
+  ul{
+    display: inline; list-style-type:none; vertical-align:middle;
+  }
+  
+  a:hover{
+  color:black
+  }
+  
+  a{
+  text-decoration: none;
+  color:white
+  }
+  
+  .logo{
+  text-decoration: none;
+  color:black;
+  font-family: 'Pacifico';
+  font-size:25px;
+  padding-right: 50px;
+  padding-left: 0px;
+  }
+  
+  .logo:hover{
+    color:white
+  }
+  
+  .profile-picture{
+    img{
+      border-radius: 50px  
+    }
+    
+    
+  }
 }
-
 
 .form_field{
   border:0;
@@ -42,24 +80,25 @@
   box-shadow: 0 3px 2px black
 }
 
-.nav-link:hover{
-  color:black
+
+.index{
+  text-align: center;
+
+  table{
+    display:inline;
+  }
+  td{
+    box-shadow: 0 3px 2px black
+  }
+  
 }
 
-.nav-link{
-  text-decoration: none;
-  color:white
-}
-
-.logo{
-  text-decoration: none;
-  color:white;
-  font-family: 'Pacifico';
-  font-size:25px;
-  padding-right: 50px;
-  padding-left: 0px;
-}
-
-.logo:hover{
-  color:#2A2C2B
+body{
+  a{
+    text-decoration: none;
+    color:#2a2c2b
+  }
+  a:hover{
+    color: #DC5D38
+  }
 }
